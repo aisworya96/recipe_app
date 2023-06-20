@@ -1,0 +1,39 @@
+<!-- create_recipe.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Recipe</title>
+</head>
+<body>
+<h2>Create Recipe</h2>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% if 'user_id' not in session %}
+<p>Please log in to create a recipe.</p>
+<p><a href="{{ url_for('login') }}">Login</a></p>
+{% else %}
+<form method="POST" action="{{ url_for('create_recipe') }}">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="ingredients">Ingredients:</label>
+    <textarea id="ingredients" name="ingredients" required></textarea><br>
+
+    <label for="instructions">Instructions:</label>
+    <textarea id="instructions" name="instructions" required></textarea><br>
+
+    <input type="submit" value="Create">
+</form>
+{% endif %}
+</body>
+</html>

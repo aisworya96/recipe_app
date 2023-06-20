@@ -1,0 +1,58 @@
+<!-- view_recipe.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Recipe</title>
+</head>
+<body>
+<h2>{{ recipe.title }}</h2>
+
+<p><strong>Ingredients:</strong></p>
+<p>{{ recipe.ingredients }}</p>
+
+<p><strong>Instructions:</strong></p>
+<p>{{ recipe.instructions }}</p>
+
+<p>Author: {{ recipe.author.username }}</p>
+
+{% if 'user_id' in session %}
+{% if recipe.author.id == session['user_id'] %}
+<p><a href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}">Edit</a></p>
+<form method="POST" action="{{ url_for('delete_recipe', recipe_id=recipe.id) }}">
+    <input type="submit" value="Delete">
+</form>
+{% endif %}
+
+{% if recipe in current_user.favorites %}
+<form method="POST" action="{{ url_for('remove_favorite_recipe', recipe_id=recipe.id) }}">
+    <input type="submit" value="Remove from Favorites">
+</form>
+{% else %}
+<form method="POST" action="{{ url_for('favorite_recipe', recipe_id=recipe.id) }}">
+    <input type="submit" value="Add to Favorites">
+</form>
+{% endif %}
+{% endif %}
+
+{% if 'user_id' in session %}
+<form method="POST" action="/comment/{{ recipe.id }}">
+    <h2>Add a Comment</h2>
+    <textarea name="comment" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% else %}
+<p>Please <a href="/login">login</a> to add a comment.</p>
+{% endif %}
+
+<!-- Display Existing Comments -->
+<h2>Comments</h2>
+{% for comment in recipe.comments %}
+<div>
+    <p>{{ comment.text }}</p>
+    <p>Posted by: {{ comment.user.username }} on {{ comment.created_at }}</p>
+</div>
+{% endfor %}
+</body>
+</html>
