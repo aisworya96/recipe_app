@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Environment-specific files
+.env
+.env.*
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Compiled Python files
+*.pyc
+
+# Logs and temporary files
+*.log
+*.swp
+*.swo
+*.tmp
+
+# Dependency directories
+venv/
+env/
+lib/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Ignore the local configuration file if using configuration management
+config/local.py
