@@ -64,6 +64,8 @@ This Flask application allows users to create, edit, and delete recipes. Users c
 3. Create the database tables by running the following command:
 
 ```sql
+CREATE database MyDatabase;
+Use MyDatabase;
 CREATE TABLE user (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(100) NOT NULL,
