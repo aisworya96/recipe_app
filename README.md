@@ -102,6 +102,14 @@ INSERT INTO user (username, password) VALUES ('admin', 'password');
 INSERT INTO recipe (title, ingredients, instructions, created_at, author_id)
 VALUES ('Chocolate Chip Cookies', 'Flour, sugar, chocolate chips', '1. Preheat oven to 350°F. 2. Mix ingredients...', NOW(), 1);
 ```
+4. Before running below command check the flask version using command ``falsk --version``
+```agsl
+Python 3.10.0
+Flask 2.1.3
+Werkzeug 2.0.1
+```
+Commands to run the application:
+    ``flask run``
 
-4. Access the application by visiting `http://localhost:5000` in your web browser.
+5. Access the application by visiting `http://localhost:5000` in your web browser.
 
