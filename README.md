@@ -98,7 +98,7 @@ CREATE TABLE comment (
     FOREIGN KEY (recipe_id) REFERENCES recipe (id)
 );
 
-INSERT INTO user (username, password) VALUES ('admin', 'password');
+INSERT INTO user (username, password) VALUES ('admin', 'pbkdf2:sha256:260000$gq1B4eInE36bKhE4$42150e96c7ea9edba133fdae47e89547d05b9683ae534534a078fa5aef14ec2a');
 INSERT INTO recipe (title, ingredients, instructions, created_at, author_id)
 VALUES ('Chocolate Chip Cookies', 'Flour, sugar, chocolate chips', '1. Preheat oven to 350°F. 2. Mix ingredients...', NOW(), 1);
 ```
@@ -112,5 +112,5 @@ Commands to run the application:
     ``flask run``
 
 5. Access the application by visiting `http://localhost:5000` in your web browser.
-6. Please register a user before login
+6. Please register a user before login or by default user(admin/password)
 
