@@ -113,6 +113,8 @@ Werkzeug 2.0.1
 Commands to run the application:
     ``flask run``
 
+Alternatively you can run it by ``python3 app.py``
+
 5. Access the application by visiting `http://localhost:5000` in your web browser.
 6. Please register a user before login or by default user(admin/password)
 
