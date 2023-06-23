@@ -112,4 +112,5 @@ Commands to run the application:
     ``flask run``
 
 5. Access the application by visiting `http://localhost:5000` in your web browser.
+6. Please register a user before login
 
