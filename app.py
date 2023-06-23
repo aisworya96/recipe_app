@@ -1,15 +1,15 @@
 from flask import Flask, render_template, redirect, request, flash, url_for, session
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import or_
+from extensions import db, login_manager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '0951e543-441d-41e9-9890-224eee7440a2'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/MyDatabase'
 
-db = SQLAlchemy(app)
-login_manager = LoginManager(app)
+db.init_app(app)
+login_manager.init_app(app)
 login_manager.login_view = 'login'
 app.secret_key = app.config['SECRET_KEY']
 
@@ -205,8 +205,9 @@ def populate_database():
     # Create a predefined recipe
     title = 'Chocolate Cake'
     instructions = '1. Preheat the oven...\n2. In a mixing bowl...\n3. Bake for 30 minutes...'
+    ingredients = '1.water'
     admin_user_id = admin_user.id
-    recipe = Recipe(title=title, instructions=instructions, author_id=admin_user_id)
+    recipe = Recipe(title=title, ingredients=ingredients, instructions=instructions, author_id=admin_user_id)
     db.session.add(recipe)
     db.session.commit()
 
